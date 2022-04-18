@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.2"
+  },
+  "name": "team-profile_generator",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matt11711/Team-Profile_Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matt11711/Team-Profile_Generator/issues"
+  },
+  "homepage": "https://github.com/Matt11711/Team-Profile_Generator#readme"
+}
