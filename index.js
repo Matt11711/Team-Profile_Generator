@@ -6,8 +6,10 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const generateHTML = require('./src/template')
 
+// initializes the employee array globally
 let employees = [];
-// questions to get manager information and then bring us to the teambuilder prompt
+
+// questions to get manager information
 const startTeam = () => {
   return inquirer.prompt([
     {
@@ -103,7 +105,7 @@ function addEngineer() {
       })
 }
 
-
+// writes the html to a file in the dist folder
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
       fs.writeFile('./dist/index.html',fileContent, err => {
@@ -123,6 +125,7 @@ const writeFile = fileContent => {
     });
   };
 
+//   starts the application 
 startTeam().then((data) => {
   data.role = "Manager";
   employees.push(new Manager(data));

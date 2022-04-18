@@ -1,46 +1,46 @@
-// Grants access to the file system functionality
+// importing the fs module
 const fs = require("fs");
 
 function generateHTML(data) {
-  // Setting team variable empty
-  var team = ``;
+  // initializing team variable
+  let team = ``;
 
-  // Set i = 1 - we are getting the manager information from the zero index in the data array
+  // Set i = 1 - we have only one manager at index 0 so it's handled outside of this loop
   for (let i = 1; i < data.length; i++) {
-    // If data role is equal to Intern - return the following
-    if (data[i].role === "Intern") {
+    // card for interns
+    if (data[i].getRole() === "Intern") {
       team += `
       <div class="col-md-4 ">
       <div class="card col-md-12 mt-4 px-3">
           <div class="card-header bg-primary text-light">
-              <h3 class="employee-name"> ${data[i].name} </h3>
-              <h5 class="job-title"><i class="fa fa-mortar-board"></i> ${data[i].role}</h5>
+              <h3 class="employee-name"> ${data[i].getName()} </h3>
+              <h5 class="job-title"> ${data[i].getRole()}</h5>
           </div>
           <div class="card-body">
-              <ul class="list-group list-group-flush shadow">
-                  <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[i].id} </li>
-                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data[i].email}">${data[i].email}</a> </li>
-                  <li class="list-group-item"> <i class="fa fa-apple"></i> School: ${data[i].school}</li>
+              <ul class="list-group list-group-flush ">
+                  <li class="list-group-item"> ID: ${data[i].getId()} </li>
+                  <li class="list-group-item"> Email: <a href="mailto:${data[i].getEmail()}">${data[i].getEmail()}</a> </li>
+                  <li class="list-group-item"> School: ${data[i].getSchool()}</li>
               </ul>
           </div>
       </div>
   </div>`;
 
-      // Else if the role is Engineer
+      // card for engineers
     }
-    if (data[i].role === "Engineer") {
+    if (data[i].getRole() === "Engineer") {
       team += `
       <div class="col-md-4">
       <div class="card mt-4 px-3">
           <div class="card-header bg-primary text-light">
-              <h3 class="employee-name"> ${data[i].name} </h3>
-              <h5 class="job-title"><i class="fa fa-desktop"></i> ${data[i].role} </h5>
+              <h3 class="employee-name"> ${data[i].getName()} </h3>
+              <h5 class="job-title"> ${data[i].getRole()} </h5>
           </div>
           <div class="card-body">
-              <ul class="list-group list-group-flush shadow">
-                  <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[i].id} </li>
-                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: <a href="mailto: ${data[i].email}">${data[i].email}</a></li>
-                  <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a href="https://github.com/${data[i].github}" target="_blank">${data[i].github}</a> </li>
+              <ul class="list-group list-group-flush ">
+                  <li class="list-group-item"> ID: ${data[i].getId()} </li>
+                  <li class="list-group-item">Email: <a href="mailto: ${data[i].getEmail()}">${data[i].getEmail()}</a></li>
+                  <li class="list-group-item"> GitHub: <a href="https://github.com/${data[i].getGithub()}" target="_blank">${data[i].getGithub()}</a> </li>
               </ul>
           </div>
       </div>
@@ -55,17 +55,12 @@ function generateHTML(data) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Team Profile Page </title>
+        <title> Project Team Overview </title>
     
     
         <!-- Bootstrap CDN Style Sheet -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
-        <!-- CSS Style Sheet -->
-        <link rel="stylesheet" href="./style.css">
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="../assets/favicon/favicon.ico">
     
     </head>
     
@@ -78,16 +73,16 @@ function generateHTML(data) {
                 <div class="col-md-4">
                     <div class="card mt-4 px-3 d-flex">
                         <div class="card-header bg-primary text-light">
-                            <h3 class="employee-name"> ${data[0].name}</h3>
-                            <h5 class="job-title"><i class="fa fa-coffee"></i> ${data[0].role}</h5>
+                            <h3 class="employee-name"> ${data[0].getName()}</h3>
+                            <h5 class="job-title"> ${data[0].getRole()}</h5>
                         </div>
                         <div class="card-body">
-                            <ul class="list-group list-group-flush shadow ">
-                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[0].id}</li>
-                                <li class="list-group-item"><i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data[0].email}">${data[0].email}</a>
+                            <ul class="list-group list-group-flush  ">
+                                <li class="list-group-item"> ID: ${data[0].getId()}</li>
+                                <li class="list-group-item"> Email: <a href="mailto:${data[0].getEmail()}">${data[0].getEmail()}</a>
     
                                 </li>
-                                <li class="list-group-item"><i class="fa fa-map-marker"></i> Office Number: ${data[0].officeNumber}</li>
+                                <li class="list-group-item"> Office Number: ${data[0].officeNumber}</li>
                             </ul>
                         </div>
     
