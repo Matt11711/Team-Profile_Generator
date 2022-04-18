@@ -5,7 +5,7 @@ const exampleManager = {
     id: 54321,
     email: 'testemail@test.com',
     role: 'Manager',
-    officeNumber: '6969'
+    officeNumber: 6969
 }
 
 test('Creates an manager with a name, id, email, role, and school', () => {
@@ -14,7 +14,7 @@ test('Creates an manager with a name, id, email, role, and school', () => {
     expect(manager.id).toBe(54321)
     expect(manager.email).toBe('testemail@test.com')
     expect(manager.role).toBe('Manager')
-    expect(manager.school).toBe('Harvard')
+    expect(manager.officeNumber).toBe(6969)
     })
     
     
